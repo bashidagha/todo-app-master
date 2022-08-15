@@ -4,7 +4,9 @@ import TodoContext from "../store/todo-context";
 const TodoItem = (props) => {
   const ctx = useContext(TodoContext);
 
-  const todoDefaultChecked = props.status === "completed" ? true : false;
+  const changeTodoStatusHandler = () => {
+      ctx.changeStatusTodoItem(props.id)
+  };
 
   return (
     <div className="todo__item">
@@ -12,12 +14,12 @@ const TodoItem = (props) => {
         <input
           type="checkbox"
           id={"item" + props.id}
-          defaultChecked={todoDefaultChecked}
-          //   onChange={changeTodoStatusHandler}
+          defaultChecked={props.status}
+          onChange={changeTodoStatusHandler}
         />
         <label
           htmlFor={"item" + props.id}
-          className={props.status === "completed" ? "crossline" : ""}
+          className={props.status ? "crossline" : ""}
         >
           {" "}
           {props.title}

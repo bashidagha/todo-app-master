@@ -11,7 +11,7 @@ const AddTodo = (props) => {
 
     ctx.addTodoItem({
       todo: enteredTodo.current.value,
-      status: "active",
+      status: false,
       id: ctx.todos.length + 1,
     });
   };

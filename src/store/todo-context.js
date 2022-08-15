@@ -7,6 +7,7 @@ const TodoContext = createContext({
   addTodoItem: () => {},
   removeTodoItem: () => {},
   changeStatusTodoItem: () => {},
+  removeCompletedTodoItem: () => {},
 });
 
 export function TodoContextProvider(props) {
@@ -27,10 +28,26 @@ export function TodoContextProvider(props) {
     setTodos(filteredTodos);
   };
 
-  const changeStatusTodoItem = (id) => {
-    const filteredTodo = todos.filter((todo) => todo.id === id);
+  const removeCompletedTodoItem = () => {
+    const filteredTodos = todos.filter((todo) => todo.status !== true);
 
-    console.log(filteredTodo);
+    setTodos(filteredTodos);
+  };
+
+  const changeStatusTodoItem = (id) => {
+    const updatedTodos = todos.map((x) =>
+      x.id === id ? { ...x, status: !x.status } : x
+    );
+
+    // var foundIndex = todos.findIndex(x => x.id == item.id);
+
+    // const foundTodo = todos[foundIndex]
+
+    // setTodos((prevState)=>prevState[foundIndex]= )
+    // tosdos[foundIndex] = item;
+
+    setTodos(updatedTodos);
+
   };
 
   const context = {
@@ -40,6 +57,7 @@ export function TodoContextProvider(props) {
     addTodoItem: addTodoItem,
     removeTodoItem: removeTodoItem,
     changeStatusTodoItem: changeStatusTodoItem,
+    removeCompletedTodoItem: removeCompletedTodoItem,
   };
 
   return (

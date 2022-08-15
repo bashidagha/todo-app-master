@@ -6,11 +6,25 @@ import TodoItem from "./TodoItem";
 const Todos = (props) => {
   const ctx = useContext(TodoContext);
 
+  let showingTodos = ctx.todos;
+
+  if (ctx.currentTab === "all") {
+    showingTodos = ctx.todos;
+  } else if (ctx.currentTab === "active") {
+    showingTodos = ctx.todos.filter((todo) => todo.status === false);
+  } else if (ctx.currentTab === "completed") {
+    showingTodos = ctx.todos.filter((todo) => todo.status === true);
+  }
+
+  let lengthCompletedTodos = ctx.todos.filter(
+    (todo) => todo.status === true
+  ).length;
+
   return (
     <>
       {ctx.currentTab !== "completed" && <AddTodo />}
 
-      {ctx.todos.map((todo) => (
+      {showingTodos.map((todo) => (
         <TodoItem
           title={todo.todo}
           status={todo.status}
@@ -19,8 +33,8 @@ const Todos = (props) => {
         />
       ))}
 
-      {ctx.currentTab === "completed" && (
-        <button className="btn-deleteall">
+      {ctx.currentTab === "completed" && lengthCompletedTodos > 0 && (
+        <button className="btn-deleteall" onClick={ctx.removeCompletedTodoItem}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="12"
