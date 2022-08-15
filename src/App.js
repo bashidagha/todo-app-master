@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Todos from "./components/Todos";
+import TodoContext from "./store/todo-context";
 
 function App() {
-  const [enableTab, setEnableTab] = useState("all");
 
-  const [todos, setTodos] = useState([]);
+  const ctx = useContext(TodoContext)
 
   return (
     <div className="container">
@@ -12,26 +12,26 @@ function App() {
 
       <ul className="tabs">
         <li
-          className={enableTab === "all" ? "enable" : ""}
-          onClick={() => setEnableTab("all")}
+          className={ctx.currentTab === "all" ? "enable" : ""}
+          onClick={() => ctx.changeCurrentTabHandler("all")}
         >
           All
         </li>
         <li
-          className={enableTab === "active" ? "enable" : ""}
-          onClick={() => setEnableTab("active")}
+          className={ctx.currentTab === "active" ? "enable" : ""}
+          onClick={() => ctx.changeCurrentTabHandler("active")}
         >
           Active
         </li>
         <li
-          className={enableTab === "completed" ? "enable" : ""}
-          onClick={() => setEnableTab("completed")}
+          className={ctx.currentTab === "completed" ? "enable" : ""}
+          onClick={() => ctx.changeCurrentTabHandler("completed")}
         >
           Completed
         </li>
       </ul>
 
-      <Todos todos={todos} setTodos={setTodos} currentTab={enableTab}/>
+      <Todos/>
 
     </div>
   );

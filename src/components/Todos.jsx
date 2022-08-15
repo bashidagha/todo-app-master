@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import TodoContext from "../store/todo-context";
 import AddTodo from "./AddTodo";
+import TodoItem from "./TodoItem";
 
 const Todos = (props) => {
+
+  const ctx = useContext(TodoContext)
+
+
   return (
     <>
-      {props.currentTab !== "completed" && (
-        <AddTodo setTodos={props.setTodos} />
+      {ctx.currentTab !== "completed" && (
+        <AddTodo />
       )}
 
-      {props.todos.map((todo) => (
-        <>{todo.todo}</>
+      {ctx.todos.map((todo) => (
+        <TodoItem
+          title={todo.todo}
+          status={todo.status}
+          key={todo.id}
+          id={todo.id}
+        />
       ))}
     </>
   );

@@ -1,17 +1,18 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import TodoContext from "../store/todo-context";
 import "./todo.css";
 
 const AddTodo = (props) => {
   const enteredTodo = useRef();
+  const ctx = useContext(TodoContext);
 
   const addTodoHandler = (event) => {
     event.preventDefault();
 
-    props.setTodos((prevState) => {
-      return [
-        ...prevState,
-        { todo: enteredTodo.current.value, status: "active" },
-      ];
+    ctx.addTodoItem({
+      todo: enteredTodo.current.value,
+      status: "active",
+      id: ctx.todos.length + 1,
     });
   };
 

@@ -8,7 +8,7 @@
   padding: 2rem 4rem;
 }
 
-input{
+.addtodo input{
     border: 1px solid #BDBDBD;
     border-radius: 12px;
     outline: none;
@@ -21,4 +21,16 @@ input{
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.todo__item{
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.crossline{
+    text-decoration: line-through;
 }
