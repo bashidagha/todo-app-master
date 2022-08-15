@@ -8,29 +8,40 @@
   padding: 2rem 4rem;
 }
 
-.addtodo input{
-    border: 1px solid #BDBDBD;
-    border-radius: 12px;
-    outline: none;
-    padding: 2rem 1rem; 
-    width: 100%;
-
+.addtodo input {
+  border: 1px solid #bdbdbd;
+  border-radius: 12px;
+  outline: none;
+  padding: 2rem 1rem;
+  width: 100%;
 }
 
-.addtodo{
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
+.addtodo {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.todo__item{
-    margin: 3rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.todo__item {
+  margin: 3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.crossline{
-    text-decoration: line-through;
+.crossline {
+  text-decoration: line-through;
+}
+
+.btn-deleteall {
+  color: white;
+  background-color: #eb5757;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  padding: 1.2rem 2rem;
+  float: right;
 }
