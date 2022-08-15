@@ -47,7 +47,6 @@ export function TodoContextProvider(props) {
     // tosdos[foundIndex] = item;
 
     setTodos(updatedTodos);
-
   };
 
   const context = {
