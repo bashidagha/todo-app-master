@@ -23,11 +23,31 @@
   margin-bottom: 1rem;
 }
 
+
+@keyframes add_animation{
+    0%{
+        transform: translateY(100%);
+    }
+
+    50%{
+        transform: translateY(-10%);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+
+}
+
+
 .todo__item {
   margin: 3rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation: add_animation;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
 }
 
 .crossline {
@@ -45,3 +65,5 @@
   padding: 1.2rem 2rem;
   float: right;
 }
+
+
